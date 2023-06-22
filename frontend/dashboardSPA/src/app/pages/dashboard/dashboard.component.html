@@ -1,0 +1,28 @@
+
+<div class="dashboard-page">
+     <!-- Top panel menu -->
+    <app-user-navigation></app-user-navigation>
+    <!-- Left panel menu -->
+   <app-main-navigation></app-main-navigation>
+   <div class="center-container">
+
+   
+     <div class="greeting-user-container">
+          <!-- TO DO data will come from GET API -->
+          <h2 class="heading-text">Hi, Gerald Goh 👋 </h2> 
+          <p class="second-heading-text">Manage your documents issued by SMU Academy or track your career goal.</p>
+     </div>
+     <div class="content-container">
+          <!-- TO DO validation base on GET API user is_personal -->
+          <div class="goal-container">
+               <h3>Career Goal</h3>
+               <app-data-graph></app-data-graph>
+          </div>
+          <div class="documents-container">
+               <h3>Recent Documents</h3>
+               <app-data-table></app-data-table>
+          </div>
+
+     </div>
+     </div>
+</div>

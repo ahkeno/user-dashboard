@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+.main-nav-container{
+    background-color: $acc-navy;
+    height: 100%;
+    width: auto;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    .app-logo{
+        text-align: center;
+        padding: 20px 0;
+    }
+    ul {
+        padding: 20px;
+        li{
+            list-style: none;
+            padding: 30px 0;
+        }
+    }
+}

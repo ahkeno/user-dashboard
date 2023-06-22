@@ -1,0 +1,33 @@
+@import "../../styles/variables.scss";
+.dashboard-page{
+   
+    
+    h1{
+        font-size: $font-large;
+    }
+    h3{
+        font-size: $font-medium;
+    }
+    .second-heading-text{
+        font-size: $font-normal;
+    }
+    .content-container{
+        display: flex;
+        justify-content: space-between;
+    }
+    .goal-container{
+        border-radius: 6px;
+        border: 1px solid $acc-neutral;
+    }
+    .documents-container{
+        border-radius: 6px;
+        border: 1px solid $acc-neutral;
+    }
+   .center-container{
+    background-color: $acc-white-color;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+   }
+}
