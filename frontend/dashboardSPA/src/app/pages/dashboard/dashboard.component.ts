@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   constructor() { }
-
+  chartData = [20,80]; // TODO  change back any after api call
   ngOnInit(): void {
+    // API call
   }
 
 }

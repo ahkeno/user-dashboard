@@ -38,6 +38,16 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 80%;
+   }
+   .two-column{
+    display: flex;
+    justify-content: space-between;
+   }
+   .left-container{
+    width: 30%;
+   }
+   .right-container{
+    width: 68%;
    }
 }

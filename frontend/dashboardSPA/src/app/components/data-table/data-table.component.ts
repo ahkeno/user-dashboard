@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {userDocumentHeader} from '../../../assets/languages/en/user-document';
 
 @Component({
   selector: 'app-data-table',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DataTableComponent implements OnInit {
 
   constructor() { }
-
+  headerTitles = userDocumentHeader;
   ngOnInit(): void {
   }
 
