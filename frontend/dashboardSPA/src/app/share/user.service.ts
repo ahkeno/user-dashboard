@@ -10,8 +10,9 @@ import {User} from './models/user';
 
 export class UserService {
     private rootUrl = `${environment.API_ROOT}`;
-    private urlUser = `${environment.MOCK}` +'user'
-    private urlUserCareer = `${environment.MOCK}` +'career'
+    private urlUser = `${environment.MOCK}` +'user';
+    private urlUserCareer = `${environment.MOCK}` +'career';
+    private urlDocument = `${environment.MOCK}` +'document';
     private httpOptions = {
         headers: new HttpHeaders({
             'Content-Type':  'application/json'
@@ -22,7 +23,7 @@ export class UserService {
         return this.http.get<any>(this.urlUser).pipe(
             tap(userData => console.log("getUser",userData)),
             catchError((error:any) => {
-            return Observable.throw(error);
+            return error;
         })
     );
     }
@@ -30,7 +31,15 @@ export class UserService {
         return this.http.get<any>(this.urlUserCareer).pipe(
             tap(userData => console.log("get career",userData)),
             catchError((error:any) => {
-            return Observable.throw(error);
+            return error;
+        })
+    );
+    }
+    getDocument():Observable<any>{
+        return this.http.get<any>(this.urlDocument).pipe(
+            tap(userData => console.log("document",userData)),
+            catchError((error:any) => {
+            return error;
         })
     );
     }

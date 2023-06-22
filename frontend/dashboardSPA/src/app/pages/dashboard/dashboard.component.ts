@@ -1,8 +1,4 @@
-import { Component,OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap} from '@angular/router';
-import { Observable, of ,Subject,interval} from 'rxjs';
-import { distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
-
+import { Component } from '@angular/core';
 import { UserService } from './../../share/user.service';
 
 @Component({
@@ -10,26 +6,25 @@ import { UserService } from './../../share/user.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   isPersonal: boolean = false;
   constructor(
-    private userService: UserService,
-    private router : Router,
-    private route: ActivatedRoute
+    private userService: UserService
   ) { }
-  chartData = []; // TODO  change back any after api call
+  chartData = []; 
   user: any;
   userGoal: any;
+  documentList: any;
   ngOnInit(): void {
-    // API call
+    // API call for onload
     this.loadUser();
+    this.loadDocument()
   }
   loadUser(){
     this.userService.getUser().subscribe(dataUser => {
-      console.log("COme to service call", dataUser);
-      this.user = dataUser;
+      this.user = dataUser.data;
       // Call Career goal API
-      this.isPersonal = this.user.data.current_organisation.is_personal;
+      this.isPersonal = this.user.current_organisation.is_personal;
       if(this.isPersonal){
         this.loadUserGoal();
       }
@@ -39,8 +34,13 @@ export class DashboardComponent implements OnInit {
   }
   loadUserGoal(){
     this.userService.getUserCareer().subscribe(dataGoal => {
-      this.userGoal = dataGoal;
-      this.chartData = this.userGoal.data.progress;
+      this.userGoal = dataGoal.data;
+      this.chartData = this.userGoal.progress;
+    } );
+  }
+  loadDocument(){
+    this.userService.getDocument().subscribe(dataDocument => {
+      this.documentList = dataDocument.data;
     } );
   }
 }

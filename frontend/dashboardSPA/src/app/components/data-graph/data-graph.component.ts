@@ -7,10 +7,12 @@ import Chart from 'chart.js/auto';
 })
 export class DataGraphComponent implements OnInit {
   @Input() progressData: any = [];
+  grayData : number;
   constructor() { }
-   // Doughnut
+   // Doughnut chart
    public chart: any;
   ngOnInit(): void {
+    this.grayData = 100 -this.progressData;
     this.createChart();
   }
   createChart(){
@@ -18,7 +20,7 @@ export class DataGraphComponent implements OnInit {
       type: 'doughnut', 
       data: {
       datasets: [{
-        data: this.progressData,
+        data: [this.progressData,this.grayData,],
         backgroundColor: [
           '#493DF5'	,
           '#E8E9EB'

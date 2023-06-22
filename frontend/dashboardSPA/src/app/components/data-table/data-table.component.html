@@ -5,15 +5,10 @@
         <div>{{headerTitles.headerTwo}}</div>
     </div>
     <div class="table-container">
-        <div class="data-list">
-            <div><img src="./../../../assets/icons/icon-doc.png" alt="">document name</div>
-            <div>Date
+        <div class="data-list" *ngFor="let document of documetData">
+            <div><img class="document_icon" src="./../../../assets/icons/icon-doc.png" alt="">{{document.document_name}}</div>
+            <div>{{document.created_at | date:'fullDate' :'dd MMMM y'}}
             <span class="more"><img width="20" height="20"  src="./../../../assets/icons/more-option.png" alt=""></span></div>
-        </div>
-        <div class="data-list">
-            <div><img src="./../../../assets/icons/icon-doc.png" alt="">document name</div>
-            <div>Date
-            <span class="more"><img width="20" height="20" src="./../../../assets/icons/more-option.png" alt=""></span></div>
         </div>
     </div>
 </div>

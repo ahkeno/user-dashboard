@@ -1,34 +1,33 @@
 
 <div class="dashboard-page"  *ngIf="this.user">
      <!-- Top panel menu -->
-    <app-user-navigation userInfo={{this.user.data.name}} userProfile={{this.user.data.profile_picture_url}}></app-user-navigation>
+    <app-user-navigation userInfo={{this.user.name}} userProfile={{this.user.profile_picture_url}}></app-user-navigation>
     <!-- Left panel menu -->
    <app-main-navigation></app-main-navigation>
    <div class="center-container">
      <div class="greeting-user-container">
           <!-- TO DO data will come from GET API -->
-          <h2 class="heading-text">Hi, {{this.user.data.name}}👋 </h2> 
-          <p class="second-heading-text">{{this.userGoal.data.description}}</p>
+          <h2 class="heading-text">Hi, {{this.user.name}}👋 </h2> 
+          <p class="second-heading-text">{{this.userGoal?.description}}</p>
      </div>
      <div class="two-column">
           <div class="left-container">
-               <div class="user-goal-container" *ngIf="this.user.data.current_organisation.is_personal">
+               <div class="user-goal-container" *ngIf="this.user.current_organisation.is_personal">
                     <h3>Career Goal</h3>
-                    <div class="goal-container">
+                    <div class="goal-container" *ngIf="this.userGoal">
                          <p>Your Progress</p>
                          <!-- TO DO Pass Data with input -->
-                         <app-data-graph progressData={{chartData}}></app-data-graph>
+                         <app-data-graph [progressData]="chartData"></app-data-graph>
                          <p>I want to become a</p>
-                         <h3>{{this.userGoal.data.category}}</h3>
+                         <h3>{{this.userGoal?.category}}</h3>
                          <a>View Insight</a>
                     </div>  
                </div>
           </div>
           <div class="right-container">
                <h3>Recent Documents</h3>
-               <div class="documents-container">
-                    <!-- TO DO Pass Data with input -->
-                    <app-data-table></app-data-table>
+               <div class="documents-container" *ngIf="documentList">
+                    <app-data-table [documetData]="documentList"></app-data-table>
                </div>
           </div>
      </div>
