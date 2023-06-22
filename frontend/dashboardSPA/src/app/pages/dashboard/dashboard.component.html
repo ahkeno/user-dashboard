@@ -14,14 +14,25 @@
      </div>
      <div class="content-container">
           <!-- TO DO validation base on GET API user is_personal -->
-          <div class="goal-container">
+          <div class="user-goal-container" *ngIf="true">
                <h3>Career Goal</h3>
-               <app-data-graph></app-data-graph>
+               <div class="goal-container">
+                    <p>Your Progress</p>
+                    <!-- TO DO Pass Data with input -->
+                    <app-data-graph></app-data-graph>
+                    <p>I want to become a</p>
+                    <h3>Tax Manager</h3>
+                    <a>View Insight</a>
+               </div>  
           </div>
-          <div class="documents-container">
+          <div>
                <h3>Recent Documents</h3>
-               <app-data-table></app-data-table>
+               <div class="documents-container">
+                    <!-- TO DO Pass Data with input -->
+                    <app-data-table></app-data-table>
+               </div>
           </div>
+          
 
      </div>
      </div>

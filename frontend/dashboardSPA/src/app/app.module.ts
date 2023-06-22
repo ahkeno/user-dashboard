@@ -11,6 +11,7 @@ import { DataContainerComponent } from './components/data-container/data-contain
 import { DataBoxComponent } from './components/data-box/data-box.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DataHeaderComponent } from './components/data-header/data-header.component';
+import { DataChartComponent } from './components/data-chart/data-chart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DataHeaderComponent } from './components/data-header/data-header.compon
     DataContainerComponent,
     DataBoxComponent,
     DashboardComponent,
-    DataHeaderComponent
+    DataHeaderComponent,
+    DataChartComponent
   ],
   imports: [
     BrowserModule,
