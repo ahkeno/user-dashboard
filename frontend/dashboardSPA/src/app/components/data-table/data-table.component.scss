@@ -6,13 +6,13 @@
         font-size: $font-normal;
         padding: 20px 40px;
         justify-content: space-between;
-        border-bottom: 1px solid #D0D2D6;
+        border-bottom: 1px solid $acc-neutral;
     }
     .data-list{
         display: flex;
         padding: 20px 40px;
         justify-content: space-between;
-        border-bottom: 1px solid #D0D2D6;
+        border-bottom: 1px solid $acc-neutral;
         img{
             padding-right: 10px;
         }
