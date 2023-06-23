@@ -19,7 +19,7 @@ npm start (start server without CLI )
 
 # Run development Server For Backend
 - go to the backend folder path and run 
-node index.js
+node app.js
 
 # Run Uint test for Frontend Angular 
 - run 'ng test --code-coverage' 
