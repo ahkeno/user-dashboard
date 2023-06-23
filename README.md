@@ -21,3 +21,10 @@ npm start (start server without CLI )
 - go to the backend folder path and run 
 node index.js
 
+# Run Uint test for Frontend Angular 
+- run 'ng test --code-coverage' 
+- will open new browser to show code coverage and create folder path for 'fontend/dashboardSPA/coverage
+- at 'coverage' folder - under dashboardSPA folder, will find index.html
+- open index.html (without running any server or node), it will show each componet/pages with coverage
+
+
