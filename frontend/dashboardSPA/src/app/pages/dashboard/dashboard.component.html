@@ -23,7 +23,11 @@
                </div>
           </div>
           <div class="right-container">
-               <h3>Recent Documents</h3>
+               <div class="heading">
+                    <h3>Recent Documents</h3>
+                    <h4>View All Document</h4>
+               </div>
+              
                <div class="documents-container" *ngIf="documentList">
                     <app-data-table [documetData]="documentList"></app-data-table>
                </div>

@@ -47,5 +47,12 @@
    }
    .right-container{
     width: 68%;
+    .heading{
+        display: flex;
+        justify-content: space-between
+    }
+    h4{
+        color: $acc-primiary-color;
+    }
    }
 }
