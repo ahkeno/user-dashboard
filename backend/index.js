@@ -18,7 +18,10 @@ http.createServer((request, response) => {
 	else if(urlInfo.pathname.includes('career') ) {
 		sendResponse('./career-goal.json',response)
 
-    } 
+    } else if (urlInfo.pathname.includes('document') ) {
+		sendResponse('./document.json',response)
+
+    }
   } else {
     sendResponse("", "")
   }
