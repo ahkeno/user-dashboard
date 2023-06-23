@@ -17,5 +17,7 @@ can run by command start with 'npm'
 for example : ng serve  (CLI command to start server )
 npm start (start server without CLI )
 
-
+# Run development Server For Backend
+- go to the backend folder path and run 
+node index.js
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { Router} from "@angular/router";
 @Component({
   selector: 'app-user-navigation',
   templateUrl: './user-navigation.component.html',
@@ -8,9 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserNavigationComponent implements OnInit {
   @Input() userInfo: any = [];
   @Input() userProfile: any = [];
-  constructor() { }
+  showDropDownContainer: boolean = false;
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
   }
-
+  onClickUserDropDown(){
+    // Show and Hide of Dropdown Container
+    this.showDropDownContainer = !this.showDropDownContainer;
+  }
+  onClickLogout(){
+    this.router.navigate(['home']);
+  }
 }
