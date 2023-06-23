@@ -1,14 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { UserService } from './../../share/user.service';
 import { DashboardComponent } from './dashboard.component';
-
+import { HttpClientModule } from '@angular/common/http';
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      imports: [HttpClientModule],
+      declarations: [ DashboardComponent ],
+      providers: [ UserService],
     })
     .compileComponents();
   });
