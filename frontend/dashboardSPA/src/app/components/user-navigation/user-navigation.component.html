@@ -1,10 +1,8 @@
-<div class="user-nav-container">
+<div class="user-nav-container" *ngIf="this.userInfo">
    <div class="user-logo">
-     <!-- TODO come from input data -->
-    <img src="https://placehold.co/600x400.png" alt="">
+    <img src="{{userProfile}}" alt="">
    </div> 
     <div class="user-text">
-        <!-- TODO come from input data -->
-        <h5>user name</h5>
+       <h5>{{userInfo}}</h5>
     </div>
 </div>

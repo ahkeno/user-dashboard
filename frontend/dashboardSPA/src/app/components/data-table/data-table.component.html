@@ -1,1 +1,14 @@
-<p>data-table works!</p>
+<div class="data-table-container">
+    <!-- Header -->
+    <div class="header-container" >
+        <div>{{headerTitles.headerOne}}</div>
+        <div>{{headerTitles.headerTwo}}</div>
+    </div>
+    <div class="table-container">
+        <div class="data-list" *ngFor="let document of documetData">
+            <div><img class="document_icon" src="./../../../assets/icons/icon-doc.png" alt="">{{document.document_name}}</div>
+            <div>{{document.created_at | date:'fullDate' :'dd MMMM y'}}
+            <span class="more"><img width="20" height="20"  src="./../../../assets/icons/more-option.png" alt=""></span></div>
+        </div>
+    </div>
+</div>

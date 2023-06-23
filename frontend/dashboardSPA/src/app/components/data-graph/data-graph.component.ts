@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-data-graph',
@@ -6,11 +6,13 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./data-graph.component.scss']
 })
 export class DataGraphComponent implements OnInit {
-
+  @Input() progressData: any = [];
+  grayData : number;
   constructor() { }
-   // Doughnut
+   // Doughnut chart
    public chart: any;
   ngOnInit(): void {
+    this.grayData = 100 -this.progressData;
     this.createChart();
   }
   createChart(){
@@ -18,15 +20,16 @@ export class DataGraphComponent implements OnInit {
       type: 'doughnut', 
       data: {
       datasets: [{
-        data: [34,66], // 100 is default and 34 should come from data
+        data: [this.progressData,this.grayData,],
         backgroundColor: [
           '#493DF5'	,
           '#E8E9EB'
-        ], borderWidth:0,
+        ], 
+        borderWidth:0,
         spacing: 0,
         }],
         },options: {
-          aspectRatio:0 
+          aspectRatio:1.5
         }
     });
   }

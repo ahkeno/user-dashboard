@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-navigation',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-navigation.component.scss']
 })
 export class UserNavigationComponent implements OnInit {
-
+  @Input() userInfo: any = [];
+  @Input() userProfile: any = [];
   constructor() { }
 
   ngOnInit(): void {
