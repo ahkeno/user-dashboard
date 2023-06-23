@@ -8,8 +8,14 @@ import {userDocumentHeader} from '../../../assets/languages/en/user-document';
 })
 export class DataTableComponent {
   @Input() documetData: any = [];
-  
+  isShowMore: boolean = false;
   constructor() { }
   headerTitles = userDocumentHeader;
   ngOnInit(): void {}
+
+  showMoreOption(){
+    debugger;
+    this.isShowMore = !this.isShowMore;
+  }
 }
+

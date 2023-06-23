@@ -7,8 +7,9 @@
     <div class="table-container">
         <div class="data-list" *ngFor="let document of documetData">
             <div><img class="document_icon" src="./../../../assets/icons/icon-doc.png" alt="">{{document.document_name}}</div>
-            <div>{{document.created_at}}
-            <span class="more"><img width="20" height="20"  src="./../../../assets/icons/more-option.png" alt=""></span></div>
-        </div>
+            <div class="more" >{{document.created_at | date:'fullDate' :'dd MMMM y'}}
+                <span class="popuptext" >View More Option</span>
+            </div>
+        
     </div>
 </div>

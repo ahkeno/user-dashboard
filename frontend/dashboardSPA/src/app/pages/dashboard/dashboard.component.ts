@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from './../../../environments/environment';
+import { API } from './../../../assets/api-config/api';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-
-  private urlUser = `${environment.MOCK}` +'user';
-  private urlUserCareer = `${environment.MOCK}` +'career';
-  private urlDocument = `${environment.MOCK}` +'document';
-
-  isPersonal: boolean = false;
+  
   constructor(
     private httpClient: HttpClient
   ) { }
+  api : any = API;
   chartData = []; 
   user: any;
   userGoal: any;
@@ -23,6 +20,8 @@ export class DashboardComponent {
   isLoading: boolean = false;
   isError: boolean = false;
   errorMessage: string;
+  isPersonal: boolean = false;
+
   ngOnInit(): void {
     // API call for onload
     this.loadUser();
@@ -30,7 +29,7 @@ export class DashboardComponent {
   }
   loadUser(){
     this.isLoading = true;
-    this.httpClient.get(this.urlUser).subscribe(dataUser => {
+    this.httpClient.get(this.api.urlUser).subscribe(dataUser => {
       this.user = dataUser;
       this.user = this.user.data;
       this.isLoading = false;
@@ -43,11 +42,10 @@ export class DashboardComponent {
       this.isError = true;
       this.isLoading = false;
       this.errorMessage = err;
-      console.log(err);
     } );
   }
   loadUserGoal(){
-    this.httpClient.get(this.urlUserCareer).subscribe(dataGoal => {
+    this.httpClient.get(this.api.urlUserCareer).subscribe(dataGoal => {
       this.userGoal = dataGoal;
       this.userGoal = this.userGoal.data;
       this.chartData = this.userGoal.progress;
@@ -58,7 +56,7 @@ export class DashboardComponent {
     });
   }
   loadDocument(){
-    this.httpClient.get(this.urlDocument).subscribe(dataDocument => {
+    this.httpClient.get(this.api.urlDocument).subscribe(dataDocument => {
       this.documentList = dataDocument;
       this.documentList = this.documentList.data;
     },err => {

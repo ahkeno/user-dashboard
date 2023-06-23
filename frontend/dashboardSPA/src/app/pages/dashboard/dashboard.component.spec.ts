@@ -1,5 +1,4 @@
 import { ComponentFixture,async, TestBed } from '@angular/core/testing';
-import { UserService } from './../../share/user.service';
 import { DashboardComponent } from './dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 describe('DashboardComponent', () => {
@@ -10,7 +9,7 @@ describe('DashboardComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule],
       declarations: [ DashboardComponent ],
-      providers: [ UserService],
+      providers: [],
     })
     .compileComponents();
   });
