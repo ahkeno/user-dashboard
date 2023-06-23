@@ -4,12 +4,13 @@
         <div>{{headerTitles.headerOne}}</div>
         <div>{{headerTitles.headerTwo}}</div>
     </div>
+    <!-- Data Content -->
     <div class="table-container">
         <div class="data-list" *ngFor="let document of documetData">
             <div><img class="document_icon" src="./../../../assets/icons/icon-doc.png" alt="">{{document.document_name}}</div>
             <div class="more" >{{document.created_at | date:'fullDate' :'dd MMMM y'}}
                 <span class="popuptext" >View More Option</span>
             </div>
-        
-    </div>
+        </div>
 </div>
+</div>  
