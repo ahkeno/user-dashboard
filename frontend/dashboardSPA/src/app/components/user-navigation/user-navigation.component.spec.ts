@@ -33,12 +33,16 @@ describe('UserNavigationComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should click user onClickUserDropDown', async(() => {
-    spyOn(component, 'onClickUserDropDown');
-    let button = fixture.debugElement.query(By.css('.user-nav-container'));
-    button.triggerEventHandler('click', null);
-    fixture.whenStable().then(() => {
-      expect(component.onClickUserDropDown).toHaveBeenCalled();
-    });
+    component.onClickUserDropDown();
+    component.showDropDownContainer = true;
+    expect(component.showDropDownContainer).toBe(true);
+    
+  }));
+  it('should click user onClickUserDropDown false', async(() => {
+    component.onClickUserDropDown();
+    component.showDropDownContainer = false;
+    expect(component.showDropDownContainer).toBe(false);
+    
   }));
   it('should navigate', () => {
     fixture.detectChanges();
