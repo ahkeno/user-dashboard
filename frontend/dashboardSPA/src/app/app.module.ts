@@ -11,6 +11,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserService } from './share/user.service';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ErrorComponentComponent } from './components/error-component/error-component.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     DataGraphComponent,
     DashboardComponent,
     HomepageComponent,
-    LoadingComponent 
+    LoadingComponent,
+    ErrorComponentComponent 
   ],
   imports: [
     BrowserModule,

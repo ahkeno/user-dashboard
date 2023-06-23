@@ -11,7 +11,7 @@ import {User} from './models/user';
 export class UserService {
     private rootUrl = `${environment.API_ROOT}`;
     private urlUser = `${environment.MOCK}` +'user';
-    private urlUserCareer = `${environment.MOCK}` +'career';
+    private urlUserCareer = `${environment.MOCK}` +'careerasda';
     private urlDocument = `${environment.MOCK}` +'document';
     private httpOptions = {
         headers: new HttpHeaders({
