@@ -1,13 +1,9 @@
 @import "../../styles/variables.scss";
-.user-nav-container{
-    border-radius: 15px 0px 0px 0px;
-    border-bottom: 1px solid $acc-neutral;
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px;
-    border-radius: 15px 0px 0px 0px;
-    div{
-        padding: 0 10px;
+.user-nav-component{
+
+    h5{
+        font-size: $font-normal;
+        margin: 14px 0;
     }
     .user-logo{
         img{
@@ -15,9 +11,42 @@
             height: 50px;
         }
     }
+    p{
+        font-size: $font-default;
+        color: $acc-gray;
+        margin: .5em 0;
+    }
+.user-nav-container{
+    border-radius: 15px 0px 0px 0px;
+    border-bottom: 1px solid $acc-neutral;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    border-radius: 15px 0px 0px 0px;
+    cursor: pointer;
+    div{
+        padding: 0 10px;
+    }
+    .arrow-down{
+        margin-top: 20px;
+    }
 }
-
-h5{
-    font-size: $font-normal;
-    margin: 14px 0;
+.user-dropdown-container{
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    width: 200px;
+    position: absolute;
+    z-index: 123;
+    background: #fff;
+    right: 1%;
+    }
+    .top-container{
+        border-bottom: 1px solid #E8E9EB;
+        display: flex;
+        justify-content: space-around;
+    }
+    .bottom-container{
+        cursor: pointer;
+    }
 }

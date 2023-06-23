@@ -1,8 +1,28 @@
-<div class="user-nav-container" *ngIf="this.userInfo">
-   <div class="user-logo">
-    <img src="{{userProfile}}" alt="">
-   </div> 
-    <div class="user-text">
-       <h5>{{userInfo}}</h5>
-    </div>
+<div class="user-nav-component">
+   <div class="user-nav-container" *ngIf="this.userInfo" (click)="onClickUserDropDown()">
+      <div class="user-logo">
+       <img src="{{userInfo.profile_picture_url}}" alt="icon profile picture">
+      </div> 
+       <div class="user-text">
+          <h5>{{userInfo.name}}</h5>
+       </div>
+       <span><img class="arrow-down" src="../../../assets/icons/arrow-down.png" alt="icon dropdown for logout"></span>
+   </div>
+   <div class="user-dropdown-container" *ngIf="showDropDownContainer">
+      <div class="top-container">
+         <div class="user-logo">
+            <img src="{{userInfo.profile_picture_url}}" alt="icon profile picture">
+         </div> 
+         <div class="user-text">
+            <h5>{{userInfo.name}}</h5>
+            <p>{{userInfo.current_organisation.name}}</p>
+         </div>
+      </div>
+      <div class="bottom-container">
+         <p><img src="../../../assets/icons/logout.png" alt="icon logout"> 
+         Log out</p>
+      </div>
+
+   </div>
 </div>
+

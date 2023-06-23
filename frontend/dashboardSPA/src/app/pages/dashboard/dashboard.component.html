@@ -1,12 +1,11 @@
 
 <div class="dashboard-page"  *ngIf="this.user">
      <!-- Top panel menu -->
-    <app-user-navigation userInfo={{this.user.name}} userProfile={{this.user.profile_picture_url}}></app-user-navigation>
+    <app-user-navigation [userInfo]="this.user"></app-user-navigation>
     <!-- Left panel menu -->
    <app-main-navigation></app-main-navigation>
    <div class="center-container">
      <div class="greeting-user-container">
-          <!-- TO DO data will come from GET API -->
           <h2 class="heading-text">Hi, {{this.user.name}}👋 </h2> 
           <p class="second-heading-text">{{this.userGoal?.description}}</p>
      </div>
@@ -16,7 +15,6 @@
                     <h3>Career Goal</h3>
                     <div class="goal-container" *ngIf="this.userGoal">
                          <p>Your Progress</p>
-                         <!-- TO DO Pass Data with input -->
                          <app-data-graph [progressData]="chartData"></app-data-graph>
                          <p>I want to become a</p>
                          <h3>{{this.userGoal?.category}}</h3>

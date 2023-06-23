@@ -8,9 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserNavigationComponent implements OnInit {
   @Input() userInfo: any = [];
   @Input() userProfile: any = [];
+  showDropDownContainer: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  onClickUserDropDown(){
+    // Show and Hide of Dropdown Container
+    this.showDropDownContainer = !this.showDropDownContainer;
+  }
 }
