@@ -10,6 +10,7 @@ import { DataGraphComponent } from './components/data-graph/data-graph.component
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserService } from './share/user.service';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { LoadingComponent } from './components/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     DataTableComponent,
     DataGraphComponent,
     DashboardComponent,
-    HomepageComponent 
+    HomepageComponent,
+    LoadingComponent 
   ],
   imports: [
     BrowserModule,

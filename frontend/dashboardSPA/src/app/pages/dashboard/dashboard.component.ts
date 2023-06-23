@@ -15,18 +15,22 @@ export class DashboardComponent {
   user: any;
   userGoal: any;
   documentList: any;
+  isLoading: boolean = false;
   ngOnInit(): void {
     // API call for onload
     this.loadUser();
     this.loadDocument()
   }
   loadUser(){
+    this.isLoading = true;
     this.userService.getUser().subscribe(dataUser => {
       this.user = dataUser.data;
+      this.isLoading = false;
       // Call Career goal API
       this.isPersonal = this.user.current_organisation.is_personal;
       if(this.isPersonal){
         this.loadUserGoal();
+
       }
     },err => {
       console.log(err);
