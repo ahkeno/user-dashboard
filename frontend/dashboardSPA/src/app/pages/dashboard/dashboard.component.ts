@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from './../../../assets/api-config/api';
+import {validateUser} from './../../share/validation';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { API } from './../../../assets/api-config/api';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  
+  userTypeValidate = validateUser;
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -19,9 +20,9 @@ export class DashboardComponent {
   documentList: any;
   isLoading: boolean = false;
   isError: boolean = false;
-  errorMessage: string = "";
+  errorMessage: any;
   isPersonal: boolean = false;
-
+  isValidateData: boolean = true;
   ngOnInit(): void {
     // API call for onload
     this.loadUser();
@@ -32,13 +33,22 @@ export class DashboardComponent {
     this.httpClient.get(this.api.urlUser).subscribe(dataUser => {
       this.user = dataUser;
       this.user = this.user.data;
-      this.isLoading = false;
-      // Call Career goal API
-      this.isPersonal = !this.user.current_organisation.is_personal;
-      if(this.isPersonal){
-        debugger;
-        this.loadUserGoal();
+      this.isValidateData  = this.userTypeValidate(this.user);
+      if(this.isValidateData){
+        // Validation correct 
+        this.isLoading = false;
+        // Call Career goal API
+        this.isPersonal = !this.user.current_organisation.is_personal;
+        if(this.isPersonal){
+          this.loadUserGoal();
+        }
+      }else{
+        // Error in data type
+        this.isError = true;
+        this.errorMessage = { message: "Error in : Data type"};
       }
+      
+      
     },err => {
       this.isError = true;
       this.isLoading = false;
