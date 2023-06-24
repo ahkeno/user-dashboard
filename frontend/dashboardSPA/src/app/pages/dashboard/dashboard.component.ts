@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from './../../../assets/api-config/api';
-import {validateUser} from './../../share/validation';
+import {validateUser,validateDocument} from './../../share/validation';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +9,10 @@ import {validateUser} from './../../share/validation';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+
   userTypeValidate = validateUser;
+  documentTypeValidate = validateDocument;
+
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -22,7 +25,8 @@ export class DashboardComponent {
   isError: boolean = false;
   errorMessage: any;
   isPersonal: boolean = false;
-  isValidateData: boolean = true;
+  isValidatUsereData: boolean = true;
+  isValidateDocumentData: boolean = true;
   ngOnInit(): void {
     // API call for onload
     this.loadUser();
@@ -33,9 +37,9 @@ export class DashboardComponent {
     this.httpClient.get(this.api.urlUser).subscribe(dataUser => {
       this.user = dataUser;
       this.user = this.user.data;
-      this.isValidateData  = this.userTypeValidate(this.user);
-      if(this.isValidateData){
-        // Validation correct 
+      this.isValidatUsereData  = this.userTypeValidate(this.user);
+      if(this.isValidatUsereData){
+        // User Validation correct 
         this.isLoading = false;
         // Call Career goal API
         this.isPersonal = !this.user.current_organisation.is_personal;
@@ -45,11 +49,10 @@ export class DashboardComponent {
       }else{
         // Error in data type
         this.isError = true;
-        this.errorMessage = { message: "Error in : Data type"};
+        this.errorMessage = { message: "Error in User: Data type"};
       }
-      
-      
     },err => {
+      // Error in HTTP, API
       this.isError = true;
       this.isLoading = false;
       this.errorMessage = err;
@@ -70,6 +73,12 @@ export class DashboardComponent {
     this.httpClient.get(this.api.urlDocument).subscribe(dataDocument => {
       this.documentList = dataDocument;
       this.documentList = this.documentList.data;
+      this.isValidateDocumentData  = this.documentTypeValidate(this.documentList);
+      if(!this.isValidateDocumentData){
+        // Error in data type
+        this.isError = true;
+        this.errorMessage = { message: "Error in Document: Data type"};
+      }
     },err => {
       this.isError = true;
       this.isLoading = false;

@@ -16,4 +16,20 @@ export const validateUser = (data:any) => {
     
     return true;
   };
+  export const validateDocument = (items:any) => {
+    for (const data of items) {
+    if (
+      typeof data.id !== "number" ||
+      typeof data.status !== "string" ||
+      typeof data.document_name !== "string"||
+      typeof data.issuer_name !== "string"||
+      typeof data.issuer_logo_url !== "string"||
+      typeof data.recipient_name !== "string"||
+      typeof data.created_at !== "string"||
+      typeof data.updated_at !== "string"
+    )
+      return false;
+    }
+  return true;
+};
   
