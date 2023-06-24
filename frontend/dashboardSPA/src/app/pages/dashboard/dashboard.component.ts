@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'
 import { API } from './../../../assets/api-config/api';
 import {validateUser,validateDocument,validateCareer} from './../../share/validation';
 
