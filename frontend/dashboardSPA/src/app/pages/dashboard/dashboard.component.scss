@@ -56,3 +56,18 @@
     }
    }
 }
+@media only screen and (max-width: 600px) {
+    .dashboard-page{
+        .two-column{
+            display: block;
+        }
+        .left-container{
+            width: 100%;
+           }
+           .right-container{
+            width: 100%;
+            h4{text-align: right;}
+        }
+    }
+    
+}
