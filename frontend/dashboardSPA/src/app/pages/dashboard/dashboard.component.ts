@@ -19,7 +19,7 @@ export class DashboardComponent {
   documentList: any;
   isLoading: boolean = false;
   isError: boolean = false;
-  errorMessage: string;
+  errorMessage: string = "";
   isPersonal: boolean = false;
 
   ngOnInit(): void {
