@@ -12,7 +12,7 @@
           <p *ngIf="!isPersonal">Mange your Documents</p>
      </div>
      <div  [ngClass]="isPersonal == true ? 'two-column' : 'one-column'" >
-          <div class="left-container">
+          <div class="left-container" *ngIf="isValidateCareerData">
                <div class="user-goal-container" *ngIf="isPersonal">
                     <h3>Career Goal</h3>
                     <div class="goal-container" *ngIf="this.userGoal">
