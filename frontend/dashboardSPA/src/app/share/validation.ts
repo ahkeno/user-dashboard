@@ -16,7 +16,7 @@ export const validateUser = (data:any) => {
     
     return true;
   };
-  export const validateDocument = (items:any) => {
+export const validateDocument = (items:any) => {
     for (const data of items) {
     if (
       typeof data.id !== "number" ||
@@ -31,5 +31,18 @@ export const validateUser = (data:any) => {
       return false;
     }
   return true;
+};
+export const validateCareer = (data:any) => {
+  if (
+    typeof data.id !== "number" ||
+    typeof data.name !== "string" ||
+    typeof data.description !== "string"||
+    typeof data.category !== "string"||
+    typeof data.type !== "string"||
+    typeof data.progress !== "number"
+  )
+    return false;
+
+return true;
 };
   

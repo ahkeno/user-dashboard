@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators'
 import { API } from './../../../assets/api-config/api';
 import {validateUser,validateDocument,validateCareer} from './../../share/validation';
 
@@ -87,10 +88,13 @@ export class DashboardComponent {
       this.documentList = dataDocument;
       this.documentList = this.documentList.data;
       this.isValidateDocumentData  = this.documentTypeValidate(this.documentList);
-      if(!this.isValidateDocumentData){
-        // Error in data type
-        this.isError = true;
-        this.errorMessage = { message: "Error in Document: Data type"};
+      if(this.isValidateDocumentData){
+        // Sort Date by Descending
+        this.documentList.sort((a:any, b:any) => new Date(b.date1).getTime() - new Date(a.date1).getTime());
+      }else{
+         // Error in data type
+         this.isError = true;
+         this.errorMessage = { message: "Error in Document: Data type"};
       }
     },err => {
       this.isError = true;
