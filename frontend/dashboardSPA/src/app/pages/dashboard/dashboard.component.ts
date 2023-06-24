@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from './../../share/user.service';
+import { HttpClient } from '@angular/common/http';
+import { API } from './../../../assets/api-config/api';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,40 +8,62 @@ import { UserService } from './../../share/user.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  isPersonal: boolean = false;
+  
   constructor(
-    private userService: UserService
+    private httpClient: HttpClient
   ) { }
+  api : any = API;
   chartData = []; 
   user: any;
   userGoal: any;
   documentList: any;
+  isLoading: boolean = false;
+  isError: boolean = false;
+  errorMessage: string = "";
+  isPersonal: boolean = false;
+
   ngOnInit(): void {
     // API call for onload
     this.loadUser();
-    this.loadDocument()
+    this.loadDocument();
   }
   loadUser(){
-    this.userService.getUser().subscribe(dataUser => {
-      this.user = dataUser.data;
+    this.isLoading = true;
+    this.httpClient.get(this.api.urlUser).subscribe(dataUser => {
+      this.user = dataUser;
+      this.user = this.user.data;
+      this.isLoading = false;
       // Call Career goal API
-      this.isPersonal = this.user.current_organisation.is_personal;
+      this.isPersonal = !this.user.current_organisation.is_personal;
       if(this.isPersonal){
+        debugger;
         this.loadUserGoal();
       }
     },err => {
-      console.log(err);
-  } );
-  }
-  loadUserGoal(){
-    this.userService.getUserCareer().subscribe(dataGoal => {
-      this.userGoal = dataGoal.data;
-      this.chartData = this.userGoal.progress;
+      this.isError = true;
+      this.isLoading = false;
+      this.errorMessage = err;
     } );
   }
+  loadUserGoal(){
+    this.httpClient.get(this.api.urlUserCareer).subscribe(dataGoal => {
+      this.userGoal = dataGoal;
+      this.userGoal = this.userGoal.data;
+      this.chartData = this.userGoal.progress;
+    },err => {
+      this.isError = true;
+      this.isLoading = false;
+      this.errorMessage = err;
+    });
+  }
   loadDocument(){
-    this.userService.getDocument().subscribe(dataDocument => {
-      this.documentList = dataDocument.data;
+    this.httpClient.get(this.api.urlDocument).subscribe(dataDocument => {
+      this.documentList = dataDocument;
+      this.documentList = this.documentList.data;
+    },err => {
+      this.isError = true;
+      this.isLoading = false;
+      this.errorMessage = err;
     } );
   }
 }

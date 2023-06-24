@@ -8,8 +8,8 @@ import {userDocumentHeader} from '../../../assets/languages/en/user-document';
 })
 export class DataTableComponent {
   @Input() documetData: any = [];
-  
   constructor() { }
   headerTitles = userDocumentHeader;
   ngOnInit(): void {}
 }
+

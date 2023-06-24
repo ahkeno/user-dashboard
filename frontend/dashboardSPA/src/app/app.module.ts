@@ -8,8 +8,10 @@ import { UserNavigationComponent } from './components/user-navigation/user-navig
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { DataGraphComponent } from './components/data-graph/data-graph.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { UserService } from './share/user.service';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { ErrorComponentComponent } from './components/error-component/error-component.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,14 +20,16 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     DataTableComponent,
     DataGraphComponent,
     DashboardComponent,
-    HomepageComponent 
+    HomepageComponent,
+    LoadingComponent,
+    ErrorComponentComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

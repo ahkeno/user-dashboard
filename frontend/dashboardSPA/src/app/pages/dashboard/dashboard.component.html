@@ -7,11 +7,13 @@
    <div class="center-container">
      <div class="greeting-user-container">
           <h2 class="heading-text">Hi, {{this.user.name}}👋 </h2> 
-          <p class="second-heading-text">{{this.userGoal?.description}}</p>
+          <!-- Managed User Greeting -->
+          <p *ngIf="isPersonal" class="second-heading-text">{{this.userGoal?.description}}</p>
+          <p *ngIf="!isPersonal">Mange your Documents</p>
      </div>
-     <div class="two-column">
+     <div  [ngClass]="isPersonal == true ? 'two-column' : 'one-column'" >
           <div class="left-container">
-               <div class="user-goal-container" *ngIf="this.user.current_organisation.is_personal">
+               <div class="user-goal-container" *ngIf="isPersonal">
                     <h3>Career Goal</h3>
                     <div class="goal-container" *ngIf="this.userGoal">
                          <p>Your Progress</p>
@@ -27,7 +29,6 @@
                     <h3>Recent Documents</h3>
                     <h4>View All Document</h4>
                </div>
-              
                <div class="documents-container" *ngIf="documentList">
                     <app-data-table [documetData]="documentList"></app-data-table>
                </div>
@@ -35,3 +36,5 @@
      </div>
      </div>
 </div>
+<app-loading [showLoading]="isLoading"></app-loading>
+<app-error-component *ngIf="isError" [errorMessage]='errorMessage'></app-error-component>

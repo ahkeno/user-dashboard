@@ -7,7 +7,7 @@ import Chart from 'chart.js/auto';
 })
 export class DataGraphComponent implements OnInit {
   @Input() progressData: any = [];
-  grayData : number;
+  grayData : number = 0;
   constructor() { }
    // Doughnut chart
    public chart: any;
