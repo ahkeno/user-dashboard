@@ -13,7 +13,7 @@
      </div>
      <div  [ngClass]="isPersonal == true ? 'two-column' : 'one-column'" >
           <div class="left-container">
-               <div class="user-goal-container" *ngIf="this.user.current_organisation.is_personal">
+               <div class="user-goal-container" *ngIf="isPersonal">
                     <h3>Career Goal</h3>
                     <div class="goal-container" *ngIf="this.userGoal">
                          <p>Your Progress</p>

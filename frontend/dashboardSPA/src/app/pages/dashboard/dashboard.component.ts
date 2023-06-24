@@ -34,8 +34,9 @@ export class DashboardComponent {
       this.user = this.user.data;
       this.isLoading = false;
       // Call Career goal API
-      this.isPersonal = this.user.current_organisation.is_personal;
+      this.isPersonal = !this.user.current_organisation.is_personal;
       if(this.isPersonal){
+        debugger;
         this.loadUserGoal();
       }
     },err => {
