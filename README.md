@@ -18,6 +18,7 @@ If no Angular CLI ,
 can run by command start with 'npm'
 for example : ng serve  (CLI command to start server )
 npm start (start server without CLI )
+- follow the README at folder frontend/dashboardSPA/README.md
 
 # Run development Server For Backend
 - go to the backend folder path and run 
@@ -32,3 +33,6 @@ node app.js
 # Third party libraries
 - chartJs
     url :  https://www.chartjs.org/
+
+# Document folder
+- screen captures of application UI, responsive pages and unit test  
