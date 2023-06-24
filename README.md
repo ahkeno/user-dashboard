@@ -3,10 +3,12 @@
 This project was generated with Frontend Angular and Backend ExpressJS
 
 # Folder Structure : 
-Frontend 
-- angular 
-Backend
-- ExpressJs
+- Frontend 
+    angular 
+- Backend
+    ExpressJs
+- Document 
+    screen capture of Code coverage
 
 # Run development Server For Frontend 
 - node version : v16
@@ -27,4 +29,6 @@ node app.js
 - at 'coverage' folder - under dashboardSPA folder, will find index.html
 - open index.html (without running any server or node), it will show each componet/pages with coverage
 
-
+# Third party libraries
+- chartJs
+    url :  https://www.chartjs.org/
