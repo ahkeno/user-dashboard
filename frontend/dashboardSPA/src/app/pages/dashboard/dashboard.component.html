@@ -12,7 +12,7 @@
           <p *ngIf="!isPersonal">Mange your Documents</p>
      </div>
      <div  [ngClass]="isPersonal == true ? 'two-column' : 'one-column'" >
-          <div class="left-container">
+          <div class="left-container" *ngIf="isValidateCareerData">
                <div class="user-goal-container" *ngIf="isPersonal">
                     <h3>Career Goal</h3>
                     <div class="goal-container" *ngIf="this.userGoal">
@@ -24,13 +24,13 @@
                     </div>  
                </div>
           </div>
-          <div class="right-container">
+          <div class="right-container" *ngIf="isValidateDocumentData">
                <div class="heading">
                     <h3>Recent Documents</h3>
                     <h4>View All Document</h4>
                </div>
                <div class="documents-container" *ngIf="documentList">
-                    <app-data-table [documetData]="documentList"></app-data-table>
+                    <app-data-table  [documetData]="documentList"></app-data-table>
                </div>
           </div>
      </div>
