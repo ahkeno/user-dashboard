@@ -8,7 +8,7 @@ This project was generated with Frontend Angular and Backend ExpressJS
 - Backend
     ExpressJs
 - Document 
-    screen capture of Code coverage
+   screen captures of application UI, responsive pages and unit test and Word File for folder strucutre.
 
 # Run development Server For Frontend 
 - node version : v16
@@ -34,5 +34,5 @@ node app.js
 - chartJs
     url :  https://www.chartjs.org/
 
-# Document folder
-- screen captures of application UI, responsive pages and unit test  
+# Documentation
+Please refer to the User Dashboard App Document .docx under document folder
