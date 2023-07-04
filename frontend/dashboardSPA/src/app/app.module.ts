@@ -11,6 +11,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorComponentComponent } from './components/error-component/error-component.component';
+import { DashboardService } from './share/dashboard.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ErrorComponentComponent } from './components/error-component/error-comp
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

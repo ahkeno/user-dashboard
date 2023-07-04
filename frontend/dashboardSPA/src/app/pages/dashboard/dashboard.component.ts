@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from './../../../assets/api-config/api';
 import {validateUser,validateDocument,validateCareer} from './../../share/validation';
+import { DashboardService } from 'src/app/share/dashboard.service';  
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,8 @@ export class DashboardComponent {
   careerTypeValidate = validateCareer;
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private service: DashboardService
   ) { }
   api : any = API;
   chartData = []; 
@@ -37,31 +39,32 @@ export class DashboardComponent {
     this.loadDocument();
   }
   loadUser(){
-    this.isLoading = true;
-    this.httpClient.get(this.api.urlUser).subscribe(dataUser => {
-      this.user = dataUser;
-      this.user = this.user.data;
-      this.isValidatUsereData  = this.userTypeValidate(this.user);
-      if(this.isValidatUsereData){
-        // User Validation correct 
-        this.isLoading = false;
-        // Call Career goal API
-        this.isPersonal = !this.user.current_organisation.is_personal;
-        if(this.isPersonal){
-          this.loadUserGoal();
+    this.service.getAllUser().subscribe(
+      dataUser => {
+        this.user = dataUser;
+        this.user = this.user.data;
+        this.isValidatUsereData  = this.userTypeValidate(this.user);
+        if(this.isValidatUsereData){
+          // User Validation correct 
+          this.isLoading = false;
+          // Call Career goal API
+          this.isPersonal = !this.user.current_organisation.is_personal;
+          if(this.isPersonal){
+            this.loadUserGoal();
+          }
+        }else{
+          // Error in data type
+          this.isError = true;
+          this.errorMessage = { message: "Error in User: Data type"};
         }
-      }else{
-        // Error in data type
+      },
+      err => {// Error in data type
+        console.log(err);
         this.isError = true;
-        this.errorMessage = { message: "Error in User: Data type"};
-      }
-    },err => {
-      // Error in HTTP, API
-      this.isError = true;
-      this.isLoading = false;
-      this.errorMessage = err;
-    } );
+        this.errorMessage = { message: err.message};},
+       );
   }
+  
   loadUserGoal(){
     this.httpClient.get(this.api.urlUserCareer).subscribe(dataGoal => {
       this.userGoal = dataGoal;
